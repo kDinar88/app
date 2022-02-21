@@ -3,5 +3,8 @@
 1. Cделать git clone `git@github.com:kDinar88/app.git`. Если еще нет локального репозитория
 2. Cделать composer install. Что бы создать зависимости для проекта.
 
+Для проверки стиля кода стандрту PSR-12 использовать команду
+`./vendor/bin/phpcs -s src/ --standard="PSR12"`
+
 
 Открыть localhost/app/ в браузере что бы проект запустился

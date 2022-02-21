@@ -8,6 +8,10 @@
             "App\\" : "src\\"
         }
     },
+    "require": {
+        "php": "7.4-8.*",
+        "pimple/pimple": "^3.0"
+    },
     "require-dev": {
         "phpunit/phpunit": "*",
         "squizlabs/php_codesniffer": "*",
