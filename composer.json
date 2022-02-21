@@ -1,0 +1,16 @@
+{
+    "name": "kdinar88/app",
+    "description": "test project",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\" : "src\\"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "squizlabs/php_codesniffer": "*",
+        "vimeo/psalm": "*"
+    }
+}
