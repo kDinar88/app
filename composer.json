@@ -9,8 +9,9 @@
         }
     },
     "require": {
-        "php": "7.4-8.*",
-        "pimple/pimple": "^3.0"
+        "php": "7.4 || 8.*",
+        "pimple/pimple": "^3.0",
+        "smarty/smarty": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*",

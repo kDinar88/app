@@ -1,0 +1,12 @@
+DirectoryIndex index.html index.php
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(favicon|apple-touch-icon|homescreen-|firefox-icon-|coast-icon-|mstile-).*\.(png|ico)$ - [R=404,NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [L,QSA]
+</IfModule>

@@ -1,1 +1,8 @@
 vendor/
+.idea/
+resources/compiles/*
+!resources/compiles/.gitkeep
+resources/configs/*
+!resources/configs/.gitkeep
+resources/cache/*
+!resources/cache/.gitkeep
