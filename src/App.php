@@ -6,6 +6,7 @@ use Bramus\Router\Router;
 use Pimple\Container;
 use App\Enums\Area;
 use App\Controllers\Admin\ProductsController;
+use App\Controllers\AuthController;
 
 class App extends Container
 {
@@ -42,11 +43,16 @@ class App extends Container
         };
 
         self::initRouts();
+
+        session_start();
     }
 
     protected static function initRouts(): void
     {
         $router = new Router();
+        $router->get('/admin', fn () => (self::$area = AREA::ADMIN) && (new AuthController())->authForm());
+        $router->post('/admin', fn () => (self::$area = AREA::ADMIN) && (new AuthController())->auth());
+
         $router->get('/admin/products', fn () => (self::$area = AREA::ADMIN) && (new ProductsController())->productList());
         $router->get('/admin/products/(\d+)', fn ($id) => (self::$area = AREA::ADMIN) && (new ProductsController())->product($id));
 
