@@ -38,6 +38,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/pimple/pimple" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/smarty/smarty" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bramus/router" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

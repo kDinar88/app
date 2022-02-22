@@ -2,8 +2,10 @@
 
 namespace App;
 
+use Bramus\Router\Router;
 use Pimple\Container;
 use App\Enums\Area;
+use App\Controllers\Admin\ProductsController;
 
 class App extends Container
 {
@@ -15,22 +17,19 @@ class App extends Container
     /**
      * @var
      */
-    private static $area;
+    private static $area = Area::STOREFRONT;
 
     /**
      * @return void
      */
-    public static function init($area = Area::STOREFRONT)
+    public static function init()
     {
-        self::$area = $area;
-
         if (empty(self::$storage)) {
             self::$storage = new parent();
         }
 
         self::$storage['time'] = time();
 
-        /** @var \Smarty  self::$storage['view'] */
         self::$storage['view'] = static function() {
             $smarty = new \Smarty();
 
@@ -41,5 +40,29 @@ class App extends Container
 
             return $smarty;
         };
+
+        self::initRouts();
+    }
+
+    protected static function initRouts(): void
+    {
+        $router = new Router();
+        $router->get('/admin/products', fn () => (self::$area = AREA::ADMIN) && (new ProductsController())->productList());
+        $router->get('/admin/products/(\d+)', fn ($id) => (self::$area = AREA::ADMIN) && (new ProductsController())->product($id));
+
+        $router->get('/admin/orders', fn () => (self::$area = AREA::ADMIN) && (new OrdersController())->orderList());
+        $router->get('/admin/orders/(\d+)', fn ($id) => (self::$area = AREA::ADMIN) && (new ProductsController())->order($id));
+
+        self::$storage['router'] = $router;
+    }
+
+    public static function isAdmin()
+    {
+        return self::$area === Area::ADMIN;
+    }
+
+    public static function isStorefront()
+    {
+        return self::$area === Area::STOREFRONT;
     }
 }
