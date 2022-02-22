@@ -4,10 +4,10 @@ namespace App\Enums;
 
 final class Area
 {
-    const ADMIN = 'A';
-    const STOREFRONT = 'S';
+    public const ADMIN = 'A';
+    public const STOREFRONT = 'S';
 
-    private function  __construct()
+    private function __construct()
     {
     }
 }

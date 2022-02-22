@@ -31,7 +31,7 @@ class App extends Container
 
         self::$storage['time'] = time();
 
-        self::$storage['view'] = static function() {
+        self::$storage['view'] = static function () {
             $smarty = new \Smarty();
 
             $smarty->setTemplateDir('./resources/templates');
@@ -53,11 +53,23 @@ class App extends Container
         $router->get('/admin', fn () => (self::$area = AREA::ADMIN) && (new AuthController())->authForm());
         $router->post('/admin', fn () => (self::$area = AREA::ADMIN) && (new AuthController())->auth());
 
-        $router->get('/admin/products', fn () => (self::$area = AREA::ADMIN) && (new ProductsController())->productList());
-        $router->get('/admin/products/(\d+)', fn ($id) => (self::$area = AREA::ADMIN) && (new ProductsController())->product($id));
+        $router->get(
+            '/admin/products',
+            fn () => (self::$area = AREA::ADMIN) && (new ProductsController())->productList()
+        );
+        $router->get(
+            '/admin/products/(\d+)',
+            fn ($id) => (self::$area = AREA::ADMIN) && (new ProductsController())->product($id)
+        );
 
-        $router->get('/admin/orders', fn () => (self::$area = AREA::ADMIN) && (new OrdersController())->orderList());
-        $router->get('/admin/orders/(\d+)', fn ($id) => (self::$area = AREA::ADMIN) && (new ProductsController())->order($id));
+        $router->get(
+            '/admin/orders',
+            fn () => (self::$area = AREA::ADMIN) && (new OrdersController())->orderList()
+        );
+        $router->get(
+            '/admin/orders/(\d+)',
+            fn ($id) => (self::$area = AREA::ADMIN) && (new ProductsController())->order($id)
+        );
 
         self::$storage['router'] = $router;
     }

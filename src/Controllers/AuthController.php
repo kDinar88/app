@@ -21,6 +21,7 @@ class AuthController
             $this->view->display('storefront/auth.form.tpl');
         }
     }
+
     public function auth()
     {
         if (isset($_POST['email'], $_POST['password'])) {
@@ -35,5 +36,4 @@ class AuthController
             $this->view->display('storefront/auth.form.tpl');
         }
     }
-
 }
